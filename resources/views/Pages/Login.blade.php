@@ -21,7 +21,7 @@
                 @csrf
                 {{-- <h1>Login</h1> --}}
                 <div class="register">
-                    <p>VISITOR MANGEMENT SYSTEM</p>
+                    <p>VISITOR MANAGEMENT SYSTEM</p>
                 </div>
                 <p class="Error"></p>
                 <div class="input-box">

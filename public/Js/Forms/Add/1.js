@@ -66,6 +66,8 @@ CreateEntrySubmitButton.addEventListener('click', () => {
     }  else if (PurposeOfVisiting.value == '') { 
         ErrorMessage.textContent = 'Purpose of visiting field is required..';
     }  else {
+        ExitDate.value = EntryDate.value;
+        ExitTime.value = EntryTime.value;
         CreateEntrySubmitButton.textContent = 'Processing..';
         CreateEntrySubmitButton.style.background = 'tomato';
         CreateEntryForm.setAttribute('action', '/Entry/Create'); 

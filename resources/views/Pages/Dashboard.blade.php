@@ -7,32 +7,36 @@
                 <div class="card blue">
                     <div class="title">Visitors</div>
                     <i class="zmdi zmdi-upload"></i>
-                    <div class="value">{{ $TotalVisitors }}</div>
-                    <div class="stat"><b>13</b>% increase</div>
+                    <div class="value">{{ $TotalVisitors }} ({{ $PercentageOfVisitors }}%)</div>
+                    <div class="stat">SIGNED IN<b>{{ $TotalVisitors_SignedIn }} ({{ $PercentageOfVisitors_SignedIn }}%)</b></div>
+                    <div class="stat">SIGNED OUT<b>{{ $TotalVisitors_SignedOut }} ({{ $PercentageOfVisitors_SignedOut }}%)</b></div>
                 </div>
             </div>
             <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
                 <div class="card green">
                     <div class="title">contractors</div>
                     <i class="zmdi zmdi-upload"></i>
-                    <div class="value">{{ $TotalVisitors_SignedIn }}</div>
-                    <div class="stat"><b>Entry (Signed In)</b> 0   <b>Entry (Signed Out)</b> 0</div>
+                    <div class="value">{{ $TotalContractors }} ({{ $PercentageOfContractors }}%)</div>
+                    <div class="stat">SIGNED IN<b>{{ $TotalContractors_SignedIn }} ({{ $PercentageOfContractors_SignedIn }}%)</b></div>
+                    <div class="stat">SIGNED OUT<b>{{ $TotalContractors_SignedOut }} ({{ $PercentageOfContractors_SignedOut }}%)</b></div>
                 </div>
             </div>
             <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
                 <div class="card orange">
                     <div class="title">vendors</div>
                     <i class="zmdi zmdi-download"></i>
-                    <div class="value">{{ $TotalVisitors_SignedOut }}</div>
-                    <div class="stat"><b>13</b>% decrease</div>
+                    <div class="value">{{ $TotalVendors }} ({{ $PercentageOfVendors }}%)</div>
+                    <div class="stat">SIGNED IN<b>{{ $TotalVendors_SignedIn }} ({{ $PercentageOfVendors_SignedIn }}%)</b></div>
+                    <div class="stat">SIGNED OUT<b>{{ $TotalVendors_SignedOut }} ({{ $PercentageOfVendors_SignedOut }}%)</b></div>
                 </div>
             </div>
             <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
                 <div class="card red">
                     <div class="title">Npa Personnel</div>
                     <i class="zmdi zmdi-download"></i>
-                    <div class="value">{{ $TotalVisitors_AfterClosingHours }}</div>
-                    <div class="stat"><b>13</b>% decrease</div>
+                    <div class="value">{{ $TotalNpaPersonnel }} ({{ $PercentageOfNpaPersonnel }}%)</div>
+                    <div class="stat">SIGNED IN<b>{{ $TotalNpaPersonnel_SignedIn }} ({{ $PercentageOfNpaPersonnel_SignedIn }}%)</b></div>
+                    <div class="stat">SIGNED OUT<b>{{ $TotalNpaPersonnel_SignedOut }} ({{ $PercentageOfNpaPersonnel_SignedOut }}%)</b></div>
                 </div>
             </div>
         </div>
