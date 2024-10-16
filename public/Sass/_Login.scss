@@ -48,7 +48,7 @@
         color: #fff;
         padding: 30px 40px;
         border-radius: 15px;
-        background: rgba(5, 5, 5, .7);
+        background: rgba(5, 5, 5, .3);
     }
 
     .input-box{
@@ -69,6 +69,10 @@
         border: 2px solid #fff;
         font-size: 16px;
         padding: 10px;
+    }
+
+    .input-box ::placeholder {
+        color: #ddd;
     }
 
     .input-box i{
@@ -121,8 +125,8 @@
     }
 
     .register{
-        font-size: 14px;
-        margin-top: 20px;
+        font-size: 2em !important;
+        font-weight: bold; 
         text-align: center;
     }
 

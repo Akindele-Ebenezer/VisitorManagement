@@ -62,7 +62,7 @@
   color: #fff;
   padding: 30px 40px;
   border-radius: 15px;
-  background: rgba(5, 5, 5, 0.7);
+  background: rgba(5, 5, 5, 0.3);
 }
 .Login .input-box {
   position: relative;
@@ -81,6 +81,9 @@
   border: 2px solid #fff;
   font-size: 16px;
   padding: 10px;
+}
+.Login .input-box ::placeholder {
+  color: #ddd;
 }
 .Login .input-box i {
   position: absolute;
@@ -126,8 +129,8 @@
   box-shadow: 0 0 20px #04fff0;
 }
 .Login .register {
-  font-size: 14px;
-  margin-top: 20px;
+  font-size: 2em !important;
+  font-weight: bold;
   text-align: center;
 }
 .Login .register p a {
