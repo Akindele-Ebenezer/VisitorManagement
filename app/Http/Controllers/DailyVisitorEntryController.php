@@ -167,13 +167,13 @@ class DailyVisitorEntryController extends Controller
                                                         })
                                                         ->get();   
                                         
-            $TotalSignedIn = (count($TotalVisitors_SignedIn) + count($TotalContractors_SignedIn) + count($TotalVendors_SignedIn) + count($TotalNpaPersonnel_SignedIn)) ?? 1;
+            $TotalSignedIn = (count($TotalVisitors_SignedIn) + count($TotalContractors_SignedIn) + count($TotalVendors_SignedIn) + count($TotalNpaPersonnel_SignedIn)) == 0 ? 1 : (count($TotalVisitors_SignedIn) + count($TotalContractors_SignedIn) + count($TotalVendors_SignedIn) + count($TotalNpaPersonnel_SignedIn));
             $PercentageOfVisitors_SignedIn = (count($TotalVisitors_SignedIn) / $TotalSignedIn) * 100;
             $PercentageOfContractors_SignedIn = (count($TotalContractors_SignedIn) / $TotalSignedIn) * 100;
             $PercentageOfVendors_SignedIn = (count($TotalVendors_SignedIn) / $TotalSignedIn) * 100;
             $PercentageOfNpaPersonnel_SignedIn = (count($TotalNpaPersonnel_SignedIn) / $TotalSignedIn) * 100;   
                                         
-            $TotalSignedOut = (count($TotalVisitors_SignedOut) + count($TotalContractors_SignedOut) + count($TotalVendors_SignedOut) + count($TotalNpaPersonnel_SignedOut)) ?? 1;
+            $TotalSignedOut = (count($TotalVisitors_SignedOut) + count($TotalContractors_SignedOut) + count($TotalVendors_SignedOut) + count($TotalNpaPersonnel_SignedOut)) == 0 ? 1 : (count($TotalVisitors_SignedOut) + count($TotalContractors_SignedOut) + count($TotalVendors_SignedOut) + count($TotalNpaPersonnel_SignedOut));
             $PercentageOfVisitors_SignedOut = (count($TotalVisitors_SignedOut) / $TotalSignedOut) * 100;
             $PercentageOfContractors_SignedOut = (count($TotalContractors_SignedOut) / $TotalSignedOut) * 100;
             $PercentageOfVendors_SignedOut = (count($TotalVendors_SignedOut) / $TotalSignedOut) * 100;
