@@ -1,0 +1,76 @@
+.delete-confirm {
+    position: relative;
+    display: inline-block;
+    background:#ddd;
+  }
+  .delete-confirm button {
+    position: relative;
+    font-size: 10pt;
+    white-space: nowrap;
+    padding: 0.5em 2em;
+    background-color: #cc0000;
+    color: #ffffff;
+    border: none;
+  }
+  .delete-confirm button .fa + .text {
+    margin-left: 0.2em;
+  }
+  .delete-confirm button.delete {
+    z-index: 3;
+    -webkit-transition: all 0.2s ease 0.1s;
+    transition: all 0.2s ease 0.1s;
+  }
+  .delete-confirm button.delete.confirm {
+    background-color: transparent;
+    color: #444;
+   
+    z-index: 0;
+  }
+  .delete-confirm button.delete.confirm ~ button.yes,
+  .delete-confirm button.delete.confirm ~ button.no {
+    visibility: visible;
+    color: #ffffff;
+    -webkit-transition: all 0.5s ease, visibility 0, background-color 0.3s ease 0.2s;
+    transition: all 0.5s ease, visibility 0, background-color 0.3s ease 0.2s;
+  }
+  
+  .delete-confirm button.delete.confirm ~ button.yes {
+    -webkit-transform: translate(-100%, 0);
+            transform: translate(-100%, 0);
+    background-color: #cc0000;
+  }
+  
+  .delete-confirm button.delete.confirm ~ button.no {
+    -webkit-transform: translate(100%, 0);
+            transform: translate(100%, 0);
+    background-color: #00aa00;
+  }
+  
+  .delete-confirm button.yes,
+  .delete-confirm button.no {
+    position: absolute;
+    top: 0;
+    color: #cc0000;
+    visibility: hidden;
+    z-index: 1;
+    -webkit-transition: all 0.5s ease, visibility 0.5s, background-color 0.3s ease;
+    transition: all 0.5s ease, visibility 0.5s, background-color 0.3s ease;
+  }
+  
+  .delete-confirm button.yes {
+    left: 0;
+  }
+  
+  .delete-confirm button.no {
+    right: 0;
+  }
+  
+  .delete-confirm button:focus {
+    outline: none;
+  }
+  .delete-confirm.small button,
+  .delete-confirm button.small {
+    padding: 0.5em 0.75em;
+    text-align: center;
+  }
+  
