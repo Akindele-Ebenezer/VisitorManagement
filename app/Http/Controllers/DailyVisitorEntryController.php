@@ -167,7 +167,7 @@ class DailyVisitorEntryController extends Controller
                                                         })
                                                         ->get();   
                                         
-            $TotalSignedIn = count($TotalVisitors_SignedIn) + count($TotalContractors_SignedIn) + count($TotalVendors_SignedIn) + count($TotalNpaPersonnel_SignedIn);
+            $TotalSignedIn = (count($TotalVisitors_SignedIn) + count($TotalContractors_SignedIn) + count($TotalVendors_SignedIn) + count($TotalNpaPersonnel_SignedIn)) ?? 1;
             $PercentageOfVisitors_SignedIn = (count($TotalVisitors_SignedIn) / $TotalSignedIn) * 100;
             $PercentageOfContractors_SignedIn = (count($TotalContractors_SignedIn) / $TotalSignedIn) * 100;
             $PercentageOfVendors_SignedIn = (count($TotalVendors_SignedIn) / $TotalSignedIn) * 100;
