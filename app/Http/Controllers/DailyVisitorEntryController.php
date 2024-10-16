@@ -173,7 +173,7 @@ class DailyVisitorEntryController extends Controller
             $PercentageOfVendors_SignedIn = (count($TotalVendors_SignedIn) / $TotalSignedIn) * 100;
             $PercentageOfNpaPersonnel_SignedIn = (count($TotalNpaPersonnel_SignedIn) / $TotalSignedIn) * 100;   
                                         
-            $TotalSignedOut = count($TotalVisitors_SignedOut) + count($TotalContractors_SignedOut) + count($TotalVendors_SignedOut) + count($TotalNpaPersonnel_SignedOut);
+            $TotalSignedOut = (count($TotalVisitors_SignedOut) + count($TotalContractors_SignedOut) + count($TotalVendors_SignedOut) + count($TotalNpaPersonnel_SignedOut)) ?? 1;
             $PercentageOfVisitors_SignedOut = (count($TotalVisitors_SignedOut) / $TotalSignedOut) * 100;
             $PercentageOfContractors_SignedOut = (count($TotalContractors_SignedOut) / $TotalSignedOut) * 100;
             $PercentageOfVendors_SignedOut = (count($TotalVendors_SignedOut) / $TotalSignedOut) * 100;
