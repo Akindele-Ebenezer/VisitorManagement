@@ -1,4 +1,4 @@
-@extends('Layouts.1') 
+
 @php
     if (isset($_GET['FilterValue'])) {
             if ($_GET['FilterValue'] == 'CurrentlyInTheYard') {
@@ -30,6 +30,7 @@
             }
         }
 @endphp
+@extends('Layouts.1') 
 @section('Content')
     <div class="card-list">
         <div class="row">

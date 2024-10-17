@@ -181,30 +181,30 @@ class DailyVisitorEntryController extends Controller
             $PercentageOfVendors_SignedOut = (count($TotalVendors_SignedOut) / $TotalSignedOut) * 100;
             $PercentageOfNpaPersonnel_SignedOut = (count($TotalNpaPersonnel_SignedOut) / $TotalSignedOut) * 100;
  
-            // $TotalVisitors_SignedOut = DailyVisitorEntry::where('ExitSignature', 'on')
-            //                                                 ->where(function($query1) {
-            //                                                     $query1->where(function($query) {
-            //                                                         $query->where('EntryDate', date('Y-m-d'))
-            //                                                                 ->orWhere('ExitDate', date('Y-m-d'));
-            //                                                     });
-            //                                                     $query1->orWhere(function($query) {
-            //                                                         $query->where('EntryDate', '<', date('Y-m-d'))
-            //                                                                 ->where('ExitDate', '>', date('Y-m-d'));
-            //                                                     });
-            //                                                 })
-            //                                             ->get();
-            //     $TotalVisitors_AfterClosingHours = DailyVisitorEntry::where('ExitDate', '>=', date('Y-m-d'))->where('ExitTime', '>', '17:00')
-            //                                                             ->where(function($query1) {
-            //                                                                 $query1->where(function($query) {
-            //                                                                     $query->where('EntryDate', date('Y-m-d'))
-            //                                                                             ->orWhere('ExitDate', date('Y-m-d'));
-            //                                                                 });
-            //                                                                 $query1->orWhere(function($query) {
-            //                                                                     $query->where('EntryDate', '<', date('Y-m-d'))
-            //                                                                             ->where('ExitDate', '>', date('Y-m-d'));
-            //                                                                 });
-            //                                                             })
-            //                                                         ->get();
+            $CurrentlyInTheYard = \App\Models\DailyVisitorEntry::whereNull('ExitSignature')
+            ->where(function($query1) {
+                                            $query1->where(function($query) {
+                                                $query->where('EntryDate', date('Y-m-d'))
+                                                        ->orWhere('ExitDate', date('Y-m-d'));
+                                            });
+                                            $query1->orWhere(function($query) {
+                                                $query->where('EntryDate', '<', date('Y-m-d'))
+                                                        ->where('ExitDate', '>', date('Y-m-d'));
+                                            });
+                                        })->orderBy('EntryDate', 'DESC')->orderBy('EntryTime', 'DESC')->get();  
+         
+            $SignedOut = \App\Models\DailyVisitorEntry::whereNotNull('ExitSignature')
+            ->where(function($query1) {
+                                            $query1->where(function($query) {
+                                                $query->where('EntryDate', date('Y-m-d'))
+                                                        ->orWhere('ExitDate', date('Y-m-d'));
+                                            });
+                                            $query1->orWhere(function($query) {
+                                                $query->where('EntryDate', '<', date('Y-m-d'))
+                                                        ->where('ExitDate', '>', date('Y-m-d'));
+                                            });
+                                        })->orderBy('EntryDate', 'DESC')->orderBy('EntryTime', 'DESC')->get();  
+    
         return view('Pages.Dashboard', [
             'Visitors' => $Visitors,
             'TotalVisitors' => count($TotalVisitors),
@@ -234,6 +234,8 @@ class DailyVisitorEntryController extends Controller
             'TotalNpaPersonnel_SignedOut' => count($TotalNpaPersonnel_SignedOut),
             'TotalVisitors_SignedIn' => count($TotalVisitors_SignedIn),
             'TotalVisitors_SignedOut' => count($TotalVisitors_SignedOut),
+            'CurrentlyInTheYard' => count($CurrentlyInTheYard),
+            'SignedOut' => count($SignedOut),
             // 'TotalVisitors_AfterClosingHours' => count($TotalVisitors_AfterClosingHours),
         ]); 
         

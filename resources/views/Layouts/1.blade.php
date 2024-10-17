@@ -69,13 +69,13 @@
                         <li class="nav-item CurrentlyInTheYard Load">
                             <a class="nav-link" href="#">
                             <i class="zmdi zmdi-file-text"></i>
-                            Currently in the yard  (12)
+                            Currently in the yard  ({{ $CurrentlyInTheYard }}) 
                             </a>
                         </li>
                         <li class="nav-item SignedOut Load">
                             <a class="nav-link" href="#">
                             <i class="zmdi zmdi-file-text"></i>
-                            Signed out  (3)
+                            Signed out  ({{ $SignedOut }}) 
                             </a>
                         </li>
                     </ul>
