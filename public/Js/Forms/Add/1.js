@@ -36,9 +36,10 @@ let ExitTime = document.querySelector('input[name="ExitTime"]');
 let ExitSignature = document.querySelector('input[name="ExitSignature"]');
 let ApprovedBy = document.querySelector('input[name="ApprovedBy"]');
 let PhoneNumber = document.querySelector('input[name="PhoneNumber"]');
-let PurposeOfVisiting = document.querySelector('textarea[name="PurposeOfVisiting"]'); 
+let PurposeOfVisiting = document.querySelector('textarea[name="PurposeOfVisiting"]');
 
-CreateEntrySubmitButton.addEventListener('click', () => {
+
+CreateEntrySubmitButton.addEventListener('click', () => { 
     if (Name.value == '') {
         ErrorMessage.textContent = 'Visitor name is required..';
     } else if (PersonnelClass.value == '') { 
@@ -66,11 +67,25 @@ CreateEntrySubmitButton.addEventListener('click', () => {
     }  else if (PurposeOfVisiting.value == '') { 
         ErrorMessage.textContent = 'Purpose of visiting field is required..';
     }  else {
-        ExitDate.value = EntryDate.value;
-        ExitTime.value = EntryTime.value;
-        CreateEntrySubmitButton.textContent = 'Processing..';
-        CreateEntrySubmitButton.style.background = 'tomato';
-        CreateEntryForm.setAttribute('action', '/Entry/Create'); 
-        CreateEntryForm.submit();
+        let EntryDateTimeString = EntryDate.value + 'T' + EntryTime.value;
+        let ExitDateTimeString = ExitDate.value + 'T' + ExitTime.value;
+        let EntryDateTime = new Date(EntryDateTimeString);
+        let ExitDateTime = new Date(ExitDateTimeString);
+
+        if ((ExitTime.value == '') && (ExitDate.value == '')) {
+            ExitDate.value = EntryDate.value;
+            ExitTime.value = EntryTime.value; 
+        }  else if (EntryDateTime > ExitDateTime) { 
+            ErrorMessage.textContent = 'Entry Date/Time cannot be greater than Exit Date/Time..';
+        } else {
+            ErrorMessage.textContent = 'Validating Entry (SUCCESSFUL)..';
+            ErrorMessage.style.color = '#fff';
+            ErrorMessage.style.padding = '1em';
+            ErrorMessage.style.backgroundColor = '#66B92E';
+            CreateEntrySubmitButton.textContent = 'Processing..';
+            CreateEntrySubmitButton.style.background = 'tomato';
+            CreateEntryForm.setAttribute('action', '/Entry/Create'); 
+            CreateEntryForm.submit();
+        }
     }
 });
