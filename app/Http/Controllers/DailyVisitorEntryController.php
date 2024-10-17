@@ -25,6 +25,8 @@ class DailyVisitorEntryController extends Controller
             'ExitTime' => date('H:i'),
             'ExitDate' => date('Y-m-d'),
         ]);
+
+
         $Visitors = DailyVisitorEntry::orderBy('EntryDate', 'DESC')->orderBy('EntryTime', 'DESC')->get(); 
         $TotalVisitors = DailyVisitorEntry::where('PersonnelClass', 'VISITOR')->where(function($query) {
                                                 $query->where('EntryDate', date('Y-m-d'))
@@ -234,6 +236,7 @@ class DailyVisitorEntryController extends Controller
             'TotalVisitors_SignedOut' => count($TotalVisitors_SignedOut),
             // 'TotalVisitors_AfterClosingHours' => count($TotalVisitors_AfterClosingHours),
         ]); 
+        
     }
 
     /**
