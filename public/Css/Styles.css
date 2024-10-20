@@ -1075,6 +1075,7 @@ details summary::-webkit-details-marker {
   color: #202020;
   font-family: "Montserrat", "Helvetica", "Open Sans", "Arial";
   font-size: 13px;
+  height: 100vh;
 }
 
 .action-x {
@@ -1231,14 +1232,24 @@ figure {
   right: 13px;
   top: 13px;
 }
+.card .All {
+  cursor: pointer;
+}
+.card .All:hover {
+  color: #ddd;
+}
 .card .stat {
   border-top: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
   display: flex;
   justify-content: space-between;
   font-size: 8px;
   margin-top: 25px;
   padding: 10px 10px 0;
   text-transform: uppercase;
+}
+.card .stat:hover {
+  color: #ddd;
 }
 .card .title {
   display: inline-block;
@@ -1468,6 +1479,10 @@ figure {
 
 input, label, textarea {
   font-size: smaller !important;
+}
+
+.row {
+  background-color: #1b2431 !important;
 }
 
 /*# sourceMappingURL=Styles.css.map */

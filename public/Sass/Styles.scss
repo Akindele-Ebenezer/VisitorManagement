@@ -9,10 +9,14 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    font-size: small !important;
+    font-size: small !important; 
     text-decoration: none;
 } 
 
 input, label, textarea {
     font-size: smaller !important;
+}
+
+.row {
+    background-color: #1b2431 !important;
 }

@@ -1,35 +1,4 @@
-
-@php
-    if (isset($_GET['FilterValue'])) {
-            if ($_GET['FilterValue'] == 'CurrentlyInTheYard') {
-                $Visitors = \App\Models\DailyVisitorEntry::whereNull('ExitSignature')
-                ->where(function($query1) {
-                                                $query1->where(function($query) {
-                                                    $query->where('EntryDate', date('Y-m-d'))
-                                                            ->orWhere('ExitDate', date('Y-m-d'));
-                                                });
-                                                $query1->orWhere(function($query) {
-                                                    $query->where('EntryDate', '<', date('Y-m-d'))
-                                                            ->where('ExitDate', '>', date('Y-m-d'));
-                                                });
-                                            })->orderBy('EntryDate', 'DESC')->orderBy('EntryTime', 'DESC')->get();  
-            }
-            
-            if ($_GET['FilterValue'] == 'SignedOut') {
-                $Visitors = \App\Models\DailyVisitorEntry::whereNotNull('ExitSignature')
-                ->where(function($query1) {
-                                                $query1->where(function($query) {
-                                                    $query->where('EntryDate', date('Y-m-d'))
-                                                            ->orWhere('ExitDate', date('Y-m-d'));
-                                                });
-                                                $query1->orWhere(function($query) {
-                                                    $query->where('EntryDate', '<', date('Y-m-d'))
-                                                            ->where('ExitDate', '>', date('Y-m-d'));
-                                                });
-                                            })->orderBy('EntryDate', 'DESC')->orderBy('EntryTime', 'DESC')->get();  
-            }
-        }
-@endphp
+@include('Components.Filters.Dashboard')
 @extends('Layouts.1') 
 @section('Content')
     <div class="card-list">
@@ -38,36 +7,36 @@
                 <div class="card blue">
                     <div class="title">Visitors</div>
                     <i class="zmdi zmdi-upload"></i>
-                    <div class="value">{{ $TotalVisitors }} ({{ $PercentageOfVisitors }}%)</div>
-                    <div class="stat">SIGNED IN<b>{{ $TotalVisitors_SignedIn }} ({{ $PercentageOfVisitors_SignedIn }}%)</b></div>
-                    <div class="stat">SIGNED OUT<b>{{ $TotalVisitors_SignedOut }} ({{ $PercentageOfVisitors_SignedOut }}%)</b></div>
+                    <div class="value All"><span class="d-none">Visitor</span>{{ $TotalVisitors }} ({{ $PercentageOfVisitors }}%)</div>
+                    <div class="stat Stat_SignedIn"><span class="d-none">Visitor</span>SIGNED IN<b>{{ $TotalVisitors_SignedIn }} ({{ $PercentageOfVisitors_SignedIn }}%)</b></div>
+                    <div class="stat Stat_SignedOut"><span class="d-none">Visitor</span>SIGNED OUT<b>{{ $TotalVisitors_SignedOut }} ({{ $PercentageOfVisitors_SignedOut }}%)</b></div>
                 </div>
             </div>
             <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
                 <div class="card green">
                     <div class="title">contractors</div>
                     <i class="zmdi zmdi-upload"></i>
-                    <div class="value">{{ $TotalContractors }} ({{ $PercentageOfContractors }}%)</div>
-                    <div class="stat">SIGNED IN<b>{{ $TotalContractors_SignedIn }} ({{ $PercentageOfContractors_SignedIn }}%)</b></div>
-                    <div class="stat">SIGNED OUT<b>{{ $TotalContractors_SignedOut }} ({{ $PercentageOfContractors_SignedOut }}%)</b></div>
+                    <div class="value All"><span class="d-none">contractor</span>{{ $TotalContractors }} ({{ $PercentageOfContractors }}%)</div>
+                    <div class="stat Stat_SignedIn"><span class="d-none">contractor</span>SIGNED IN<b>{{ $TotalContractors_SignedIn }} ({{ $PercentageOfContractors_SignedIn }}%)</b></div>
+                    <div class="stat Stat_SignedOut"><span class="d-none">contractor</span>SIGNED OUT<b>{{ $TotalContractors_SignedOut }} ({{ $PercentageOfContractors_SignedOut }}%)</b></div>
                 </div>
             </div>
             <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
                 <div class="card orange">
                     <div class="title">vendors</div>
                     <i class="zmdi zmdi-download"></i>
-                    <div class="value">{{ $TotalVendors }} ({{ $PercentageOfVendors }}%)</div>
-                    <div class="stat">SIGNED IN<b>{{ $TotalVendors_SignedIn }} ({{ $PercentageOfVendors_SignedIn }}%)</b></div>
-                    <div class="stat">SIGNED OUT<b>{{ $TotalVendors_SignedOut }} ({{ $PercentageOfVendors_SignedOut }}%)</b></div>
+                    <div class="value All"><span class="d-none">vendor</span>{{ $TotalVendors }} ({{ $PercentageOfVendors }}%)</div>
+                    <div class="stat Stat_SignedIn"><span class="d-none">vendor</span>SIGNED IN<b>{{ $TotalVendors_SignedIn }} ({{ $PercentageOfVendors_SignedIn }}%)</b></div>
+                    <div class="stat Stat_SignedOut"><span class="d-none">vendor</span>SIGNED OUT<b>{{ $TotalVendors_SignedOut }} ({{ $PercentageOfVendors_SignedOut }}%)</b></div>
                 </div>
             </div>
             <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
                 <div class="card red">
                     <div class="title">Npa Personnel</div>
                     <i class="zmdi zmdi-download"></i>
-                    <div class="value">{{ $TotalNpaPersonnel }} ({{ $PercentageOfNpaPersonnel }}%)</div>
-                    <div class="stat">SIGNED IN<b>{{ $TotalNpaPersonnel_SignedIn }} ({{ $PercentageOfNpaPersonnel_SignedIn }}%)</b></div>
-                    <div class="stat">SIGNED OUT<b>{{ $TotalNpaPersonnel_SignedOut }} ({{ $PercentageOfNpaPersonnel_SignedOut }}%)</b></div>
+                    <div class="value All"><span class="d-none">Npa Personnel</span>{{ $TotalNpaPersonnel }} ({{ $PercentageOfNpaPersonnel }}%)</div>
+                    <div class="stat Stat_SignedIn"><span class="d-none">Npa Personnel</span>SIGNED IN<b>{{ $TotalNpaPersonnel_SignedIn }} ({{ $PercentageOfNpaPersonnel_SignedIn }}%)</b></div>
+                    <div class="stat Stat_SignedOut"><span class="d-none">Npa Personnel</span>SIGNED OUT<b>{{ $TotalNpaPersonnel_SignedOut }} ({{ $PercentageOfNpaPersonnel_SignedOut }}%)</b></div>
                 </div>
             </div>
         </div>
@@ -229,7 +198,7 @@
                         </div>
                     </div>
                     <h3 class="title">Monthly Visits</h3>
-                    <p class="tagline">2024 (contractors/vendors and visitors)</p>
+                    <p class="tagline">{{ date('Y') }} (contractors/vendors and visitors)</p>
                     <canvas height="400" id="barChartHDark"></canvas>
                 </div>
             </div>
@@ -246,7 +215,7 @@
                         </div>
                     </div>
                     <h3 class="title">Quarterly Visitor Analysis</h3>
-                    <p class="tagline">2024 (visitor trends by quarter)</p>
+                    <p class="tagline">{{ date('Y') }} (visitor trends by quarter)</p>
                     <canvas height="400" id="doughnutChartDark"></canvas>
                 </div>
             </div>

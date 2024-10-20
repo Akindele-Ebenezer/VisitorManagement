@@ -26,7 +26,7 @@ EditEntryButtons.forEach(Button => {
         EditEntryForm.forEach(El => {
             El.classList.remove('d-none');
         });
-        Layout_x.classList.remove('d-block');  
+        // Layout_x.classList.remove('d-block');  
         Layout.style.overflow = 'hidden';  
         EditEntryFormWrapper.classList.add('d-flex');  
         EditEntrySubmitButton.nextElementSibling.textContent = Button.nextElementSibling.textContent;

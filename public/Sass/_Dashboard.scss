@@ -11,6 +11,7 @@ $text-success-x: #9bdf8d;
 	color: #202020;
 	font-family: "Montserrat", "Helvetica", "Open Sans", "Arial";
 	font-size: 13px;
+	height: 100vh;
 }
 
 .action-x {
@@ -172,15 +173,28 @@ figure {
 		right: 13px;
 		top: 13px;
 	}
+
+	.All {
+		cursor: pointer;
+
+		&:hover {
+			color: #ddd;
+		}
+	}
 	
 	.stat {
 		border-top: 1px solid rgba(255, 255, 255, 0.3);
+		cursor: pointer;
 		display: flex;
 		justify-content: space-between;
 		font-size: 8px;
 		margin-top: 25px;
 		padding: 10px 10px 0;
 		text-transform: uppercase;
+
+		&:hover {
+			color: #ddd;
+		}
 	}
 	
 	.title {
