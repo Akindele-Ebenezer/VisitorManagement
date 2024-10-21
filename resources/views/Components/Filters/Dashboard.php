@@ -1,4 +1,4 @@
-@php
+<?php
 if (isset($_GET['FilterValue']) AND ($_GET['FilterValue'] == '*') AND 
 (isset($_GET['PersonnelClass']))) {
     $Visitors = \App\Models\DailyVisitorEntry::where('PersonnelClass', $_GET['PersonnelClass'])
@@ -73,4 +73,3 @@ if (isset($_GET['FilterValue']) AND ($_GET['FilterValue'] == 'SignedOut') AND
                                             })->orderBy('EntryDate', 'DESC')->orderBy('EntryTime', 'DESC')->get();  
             }
         }
-@endphp

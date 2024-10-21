@@ -1,4 +1,3 @@
-@include('Components.Filters.Dashboard')
 @extends('Layouts.1') 
 @section('Content')
     <div class="card-list">
@@ -59,6 +58,7 @@
                         <th>Approved By</th>
                     </tr>
                 </thead>
+                @php include('../resources/views/Components/Filters/Dashboard.php'); @endphp
                 @unless (count($Visitors) > 0)
                 <tr>
                     <td>No visitor entry records..</td>
