@@ -77,6 +77,7 @@
                     $ExitTime = \Carbon\Carbon::createFromFormat('Y-m-d H:i', $ExitDate_ . ' ' . $ExitTime_);
                     $MinutesDifference = $EntryTime->diffInMinutes($ExitTime);
                     $HoursDifference = $EntryTime->diffInHours($ExitTime); 
+                    $DaysDifference = $EntryTime->diffInDays($ExitTime); 
                 @endphp
                 <tr>
                     <td>
@@ -115,6 +116,8 @@
                         <p>DURATION: 
                             @if ($MinutesDifference < 60)
                                 {{ round($MinutesDifference) }} min(s)
+                            @elseif ($HoursDifference > 24)
+                                {{ round($DaysDifference) }} {{ $DaysDifference > 1 ? 'DAYS' : 'DAY' }}
                             @else
                                 {{ round($HoursDifference) }} {{ $HoursDifference > 1 ? 'HRS' : 'HOUR' }}
                             @endif 
